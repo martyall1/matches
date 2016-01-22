@@ -18,6 +18,7 @@ class Comparison(Base):
     contract_description = Column(Unicode)
     is_match = Column(Integer, default=0)
     is_not_match = Column(Integer, default=0)
+    is_pass = Column(Integer, default=0)
     total_comparisons = Column(Integer, default=0)
 
 
