@@ -16,13 +16,13 @@ def main():
     try:
         with open("sample_match.csv", encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            headers = reader.next()
+            headers = reader.fieldnames
             for row in reader:
                 record = {
-                    'decision_id': row[headers[0]],
-                    'decision_description': row[headers[1]],
-                    'contract_id': row[headers[2]],
-                    'contract_description': row[headers[3]],
+                    'decision_id': row[headers[1]],
+                    'decision_description': row[headers[2]],
+                    'contract_id': row[headers[3]],
+                    'contract_description': row[headers[4]],
                     }
                 session.add(Comparison(**record))
         session.commit()

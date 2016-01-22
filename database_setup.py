@@ -21,6 +21,10 @@ class Comparison(Base):
     is_pass = Column(Integer, default=0)
     total_comparisons = Column(Integer, default=0)
 
+class User(Base):
+    __tablename__ = 'user'
+    id = Column(String, primary_key=True)
+    responses = Column(Integer)
 
 if __name__ == "__main__":
     engine = create_engine('sqlite:///comparisons.db')

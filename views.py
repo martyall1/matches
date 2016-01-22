@@ -27,11 +27,11 @@ def setcookie():
         return resp
     else:
         session = DBSession()
-        indices = session.query(User).order_by(User.id.desc())
-        if indices:
-            user_id = str(indices[0].id + 1)
-        else:
+        if session.query(User).count() == 0:
             user_id = "1"
+        else:
+            index = session.query(User).order_by(User.id.desc()).first()
+            user_id = str(index + 1)
         session.add(User(id=user_id, responses=0))
         session.commit()
         session.close()
@@ -43,7 +43,7 @@ def make_comparison():
     user_id = request.cookies.get('user_id')
     session = DBSession()
     user = session.query(User).filter_by(id=user_id).one()
-    if (user.responses > 0) and (user.responses > config.min_repetitions):
+    if user.responses == config.min_repetitions:
         user.responses = 0
         session.commit()
         session.close()
