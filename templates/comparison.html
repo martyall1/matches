@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <h1>Make Comparison</h1>
+    <p>
+      <h2>First Description</h2>
+      {{comparison.decision_description}}
+    </p>
+    </br>
+    <p>
+    <h2>Second Description</h2>
+      {{comparison.contract_description}}
+    </p>
+    </br>
+      <form action= {{url_for('commit_comparison', comparison_id=comparison.id)}} method='post'>
+        <input type="submit" name="submit" value="Match">
+        </br>
+        <input type="submit" name="submit" value="Not a Match">
+        </br>
+        <input type="submit" name="submit" value="Pass">
+    </form>
