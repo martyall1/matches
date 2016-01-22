@@ -7,6 +7,9 @@ from database_setup import Base, Comparison
 from io import StringIO
 import csv
 
+import config
+
+
 engine = create_engine("sqlite:///comparisons.db")
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
@@ -57,4 +60,4 @@ def return_data():
 
 if __name__ == "__main__":
     app.debug=True
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host=config.ip, port=config.port)
