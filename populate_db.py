@@ -23,14 +23,13 @@ def main():
                     'contract_description': row['contract_description'],
                     }
                 session.add(Comparison(**record))
-    except:
-        print("Error while loading data, no changes were made to the database.")
-        session.rollback()
-    finally:
         session.commit()
         print("Database populated successfully.")
         session.close()
-
+    except:
+        print("Error while loading data, no changes were made to the database.")
+        session.rollback()
+        session.close()
 
 if __name__ == "__main__":
     main()
