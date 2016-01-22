@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Comparison
 
+import config
 
 def main():
     engine = create_engine("sqlite:///comparisons.db")
@@ -15,12 +16,13 @@ def main():
     try:
         with open("sample_match.csv", encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
+            headers = reader.next()
             for row in reader:
                 record = {
-                    'decision_id': row['decision_id'],
-                    'decision_description': row['decision_description'],
-                    'contract_id': row['contract_id'],
-                    'contract_description': row['contract_description'],
+                    'decision_id': row[headers[0]],
+                    'decision_description': row[headers[1]],
+                    'contract_id': row[headers[2]],
+                    'contract_description': row[headers[3]],
                     }
                 session.add(Comparison(**record))
         session.commit()
