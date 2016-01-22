@@ -1,5 +1,15 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Comparison</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head> 
   <body>
+    <div style="text-align:center;">
     <h1>Make Comparison</h1>
     <p>
       <h2>First Description</h2>
@@ -10,16 +20,22 @@
     <h2>Second Description</h2>
       {{comparison.contract_description}}
     </p>
+    </div>
     </br>
-      <form action= {{url_for('commit_comparison', comparison_id=comparison.id)}} method='post'>
-        <input type="submit" name="submit" value="Match">
-        </br>
-        <input type="submit" name="submit" value="Not a Match">
-        </br>
-        <input type="submit" name="submit" value="Pass">
-    </form>
     <p>
+    <div style="text-align:center;">
+      <form action= {{url_for('commit_comparison', comparison_id=comparison.id)}} method='post'>
+        <input type="button" value="Match" style="height: 50px; width: 100px;">
+        <span id="tab">&nbsp;&nbsp;&nbsp;</span>
+        <input type="button" value="Not a Match" style="height: 50px; width: 100px;">
+        <span id="tab">&nbsp;&nbsp;&nbsp;</span>
+        <input type="button" value="Pass" style="height: 50px; width: 100px;">
+    </form>
+    </p>
+    <p>
+      <br/>
       <a href={{url_for('finish')}}>Click here to exit</a>
     </p>
+    </div>
   </body>
 </html>
