@@ -30,7 +30,7 @@ def setcookie():
         if session.query(User).count() == 0:
             user_id = "1"
         else:
-            index = session.query(User).order_by(User.id.desc()).first()
+            index = int(session.query(User).order_by(User.id.desc()).first().id)
             user_id = str(index + 1)
         session.add(User(id=user_id, responses=0))
         session.commit()
