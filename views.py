@@ -56,7 +56,6 @@ def make_comparison():
 @app.route("/commit/<int:comparison_id>/", methods=['POST'])
 def commit_comparison(comparison_id):
     response = request.form['submit']
-    print(response)
     session = DBSession()
     comparison = session.query(Comparison).filter_by(id=comparison_id).one()
     if response == "Match":
